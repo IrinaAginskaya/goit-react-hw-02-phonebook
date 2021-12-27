@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { List } from './ContactList.styled';
 
 const ContactList = ({ contacts, removeContact }) => (
-  <ul>
+  <List>
     {contacts.map(contact => (
       <li key={contact.id}>
         {contact.name + ':' + contact.number}
@@ -13,7 +14,7 @@ const ContactList = ({ contacts, removeContact }) => (
         }
       </li>
     ))}
-  </ul>
+  </List>
 );
 
 ContactList.propTypes = {

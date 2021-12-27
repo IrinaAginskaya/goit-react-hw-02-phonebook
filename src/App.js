@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import Form from './componenets/Form';
+import Form from './componenets/Form/Form';
 import { nanoid } from 'nanoid';
-import ContactList from './componenets/ContactList';
-import Filter from './componenets/Filter';
+import ContactList from './componenets/ContactList/ContactList';
+import Filter from './componenets/Filter/Filter';
+import { Container } from './App.styled';
 
 export default class App extends Component {
   state = {
@@ -15,16 +16,6 @@ export default class App extends Component {
     filter: '',
   };
 
-  // addContact = ({ name, number }) => {
-  //   const contact = {
-  //     id: nanoid(),
-  //     name,
-  //     number,
-  //   };
-  //   this.setState((prevState) => ({
-  //     contacts: [contact, ...prevState.contacts],
-  //   }));
-  // };
   addContact = task => {
     const searchSameName = this.state.contacts.map(cont => cont.name).includes(task.name);
 
@@ -65,7 +56,7 @@ export default class App extends Component {
   render() {
     const visibleContacts = this.getVisibleContacts();
     return (
-      <div>
+      <Container>
         <h1>Phonebook</h1>
         <Form onSubmit={this.addContact} />
 
@@ -76,7 +67,7 @@ export default class App extends Component {
         {visibleContacts.length > 0 && (
           <ContactList contacts={visibleContacts} removeContact={this.removeContact} />
         )}
-      </div>
+      </Container>
     );
   }
 }

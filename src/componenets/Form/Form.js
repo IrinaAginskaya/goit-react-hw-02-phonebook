@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { FormTitle } from './Form.styled';
 
 class Form extends Component {
   state = {
@@ -16,14 +17,13 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    // this.props.onAddContact({ ...this.state });
     this.props.onSubmit(this.state);
     this.setState({ name: '', number: '' });
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <FormTitle onSubmit={this.handleSubmit}>
         <label>
           Name
           <input
@@ -49,7 +49,7 @@ class Form extends Component {
           />{' '}
         </label>
         <button type="submit">Add contact</button>
-      </form>
+      </FormTitle>
     );
   }
 }
@@ -57,7 +57,6 @@ class Form extends Component {
 Form.propTypes = {
   name: PropTypes.string,
   number: PropTypes.string,
-  //   onAddContact: PropTypes.func.isRequired,
 };
 
 export default Form;
