@@ -15,9 +15,8 @@ export default class App extends Component {
     ],
     filter: '',
   };
-
   addContact = task => {
-    const searchSameName = this.state.contacts.map(cont => cont.name).includes(task.name);
+    const searchSameName = this.state.contacts.some(cont => cont.name.toLowerCase() === task.name);
 
     if (searchSameName) {
       alert(`${task.name} is already in contacts`);
@@ -34,6 +33,25 @@ export default class App extends Component {
       }));
     }
   };
+
+  // addContact = task => {
+  //   const searchSameName = this.state.contacts.map(cont => cont.name).includes(task.name);
+
+  //   if (searchSameName) {
+  //     alert(`${task.name} is already in contacts`);
+  //   } else if (task.name.length === 0) {
+  //     alert('Fields must be filled!');
+  //   } else {
+  //     const contact = {
+  //       ...task,
+  //       id: nanoid(),
+  //     };
+
+  //     this.setState(prevState => ({
+  //       contacts: [...prevState.contacts, contact],
+  //     }));
+  //   }
+  // };
 
   changeFilter = filter => {
     this.setState({ filter });
